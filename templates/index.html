@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Instagram Auto Messenger</title>
+    <style>
+        body {
+            background: url('/static/bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Segoe UI', sans-serif;
+            color: white;
+            text-align: center;
+            padding-top: 50px;
+        }
+        textarea, input {
+            width: 60%;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 8px;
+            border: none;
+            font-size: 16px;
+        }
+        .run-btn {
+            font-size: 20px;
+            background: rgba(255, 0, 0, 0.8);
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .stop-btn {
+            font-size: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-left: 20px;
+        }
+        .timestamp {
+            margin-top: 30px;
+            font-size: 18px;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔥 Instagram Auto Messenger 🔥</h1>
+    <form method="POST">
+        <input type="text" name="username" placeholder="Instagram Username" required><br>
+        <input type="password" name="password" placeholder="Instagram Password" required><br>
+        <textarea name="targets" rows="5" placeholder="Paste target usernames (one per line)" required></textarea><br>
+        <textarea name="messages" rows="5" placeholder="Paste messages (one per line)" required></textarea><br>
+        <button class="run-btn" name="action" value="run">🚀 RUN</button>
+        <button class="stop-btn" name="action" value="stop">🛑 STOP</button>
+    </form>
+
+    {% if running %}
+    <div class="timestamp">
+        ✅ Automation is running...
+    </div>
+    {% else %}
+    <div class="timestamp">
+        ⏹️ Automation is stopped.
+    </div>
+    {% endif %}
+
+    {% if deploy_time %}
+    <div class="timestamp">
+        🕒 Last Deploy: {{ deploy_time }}
+    </div>
+    {% endif %}
+</body>
+</html>
